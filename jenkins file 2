@@ -1,14 +1,25 @@
 pipeline {
   agent any
   parameters {
-       string(name: 'PERSON', defaultValue: 'Mr Mahesh', description: 'Who are you')
-        }
-       stages {
-           stage('stage1')  {
-               when {equals expected: 'mahesh', actual: params.PERSON}
-                 steps {
-                       echo 'Hi Mahesh !!'
+         stages {
+           stage('stage1') {
+                  steps {
+                      sh 'sleep10'
+                    }
+                }
+             stage('stage2') {
+                steps{
+                   sh 'sleep 10'
+                     }
+                 }
+             stage3('stage3') {
+                parallel {
+                stage('parallel 1') {
+                   steps [
+                         sh 'sleep 10'
                      }
                 }
-             }
-         }
+            }
+        }   
+      }
+  }       
