@@ -1,0 +1,14 @@
+pipeline {
+  agent any
+  parameters {
+       String(name: 'PERSON', defaultValue: 'Mr Mahesh', description: 'Who are you')
+        }
+       stages {
+           stage('stage1')  {
+               when {equals expected: 'mahesh', actual: params.PERSON}
+                 steps {
+                       echo 'Hi Mahesh !!'
+                     }
+                }
+             }
+         }
