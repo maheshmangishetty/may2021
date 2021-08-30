@@ -12,7 +12,7 @@ pipeline {
                    sh 'sleep 10'
                      }
                  }
-             stage3('stage3') {
+             stage('stage3') {
                 parallel {
                 stage('parallel 1') {
                    steps {
