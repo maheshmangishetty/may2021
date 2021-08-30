@@ -1,26 +1,16 @@
 pipeline {
-  agent any
-  parameters {
-         stages {
-           stage('stage1') {
-                  steps {
-                      sh 'sleep10'
+   agent any
+   parameters {
+      booleanparam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+      }
+      stages {
+         stage ('stage1') {
+             when {
+                  expression { return params.TOGGLE }
+                  }
+               steps {
+                     echo 'TESTING'
                     }
                 }
-             stage('stage2') {
-                steps{
-                   sh 'sleep 10'
-                     }
-                 }
-             stage('stage3') {
-                parallel {
-                stage('parallel 1') {
-                   steps {
-                         sh 'sleep 10'
-                     }
-                }
-            }
-        }   
+           }
       }
-  }       
-}
