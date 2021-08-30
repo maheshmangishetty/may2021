@@ -1,7 +1,7 @@
 pipeline {
    agent any
    parameters {
-      booleanparam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+      booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
       }
       stages {
          stage ('stage1') {
